@@ -31,7 +31,7 @@ public class CountryName {
 	@When("^receive valid HTTP response$")
 	public void receive_valid_HTTP_response() throws Throwable {
 
-		System.out.println("Response : " + app.printResponse(getRespCntry));
+		//System.out.println("Response : " + app.printResponse(getRespCntry));
 
 	}
 
@@ -61,7 +61,6 @@ public class CountryName {
 
 	@When("^validate \"([^\"]*)\" of given country code and statuscode (\\d+)$")
 	public void validate_of_given_country_code_and_statuscode(String expectedCapital, int statuscode) throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
 
 		JSONObject jarr = new JSONObject(getRespCntry.asString());
 		String actualcapital = jarr.get("capital").toString();
@@ -82,7 +81,7 @@ public class CountryName {
 	@When("^receive invalid HTTP response$")
 	public void receive_invalid_HTTP_response() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
-		System.out.println("Response : " + app.printResponse(getRespCntry));
+		//System.out.println("Response : " + app.printResponse(getRespCntry));
 	}
 
 	@Then("^validate statuscode (\\d+)$")
