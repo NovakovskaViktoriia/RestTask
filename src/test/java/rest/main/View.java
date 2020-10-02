@@ -1,24 +1,18 @@
 package rest.main;
 
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 
-import java.util.List;
+
 import java.util.Scanner;
 
 public class View {
 	public static void main(String[] args) {
 
-		// Get input as search by name (full or partial)
 		Scanner search = new Scanner(System.in);
-
 		do {
 			String getName = null;
 			Response getRespCntry = null;
@@ -27,7 +21,7 @@ public class View {
 			getRespCntry = getRespCountryData("name", getName);
 			System.out.println("StatusCode : " + getRespCntry.getStatusCode());
 			System.out.println("Response : " + printResponse(getRespCntry));
-		} while (true); // loop until user exits the program
+		} while (true);
 	}
 
 	public static String printResponse(Response getRespCntry) {
@@ -40,24 +34,6 @@ public class View {
 			return prettyJsonString;
 		}
 		else return error;
-	}
-
-	public static Response getCapitalCityObj(Response getRespCntry) {
-		Country country = getRespCntry.getBody().as(Country.class);
-		Gson gson = new Gson();
-		List<Country> retCountryList = gson.fromJson((JsonElement) getRespCntry, new TypeToken<List<Country>>(){}.getType());
-		return getRespCntry;
-	}
-
-	public static List getCapitalCity(Response getRespCntry) {
-		Gson gson = new Gson();
-		List<Country> returnedCountries = gson.fromJson((JsonElement) getRespCntry, new TypeToken<List<Country>>(){}.getType());
-		return returnedCountries;
-	}
-
-	public static Country createJsonObject(Response getRespCntry){
-		Country returnedCountry = getRespCntry.getBody().as(Country.class);
-		return returnedCountry;
 	}
 
 	public static Response getRespCountryData(String searchBy, String Value) {
