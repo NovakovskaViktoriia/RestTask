@@ -30,8 +30,19 @@ public class Country {
         public String flag;
         public List<Object> regionalBlocs;
         public String cioc;
+        public String message;
+        public String status;
 
-        Country(){}
+
+
+    Country(){}
+
+        public String getStatus() {
+            return message;
+        }
+        public String getMessage() {
+            return message;
+        }
 
         public String getName() {
             return name;
